@@ -1,0 +1,11 @@
+from pymol import cmd, stored
+f=open('interface.txt','w')
+
+#I am trying to get write this into a txt file.  I want to make each residue its own row so that I can then import it into Excel. 
+#Right now it is all one big line.
+
+pymol.stored.dict = {}
+text=cmd.iterate('(obj01)', 'stored.dict[(segi,chain,resn,resi)]=1')
+str_text = repr(stored.dict)
+f.write(str_text + "\n")
+f.close()
